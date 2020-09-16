@@ -1,3 +1,6 @@
+*.DS_Store
+._*
+
 lab1/review.pages
 lab2/review.pages
 
