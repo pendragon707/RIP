@@ -10,13 +10,20 @@ class cm_timer_1:
     def __exit__(self, *args):
         print('time: {}'.format(time.monotonic() - self.start))
 
-class cm_timer_2:
-    def __init__(self):
-        pass
+from contextlib import contextmanager
 
-    def __enter__(self):
-        pass
+@contextmanager
+def cm_timer_2():
+    start = time.monotonic()
+    yield
+    print('time: {}'.format(time.monotonic() - start))
 
-    def __exit__(self):
-        pass
+def main():
+    with cm_timer_1():
+        time.sleep(5.5)
 
+    with cm_timer_2():
+        time.sleep(5.5)
+
+if __name__ == "__main__":
+    main()
