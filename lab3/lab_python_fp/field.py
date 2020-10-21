@@ -19,8 +19,13 @@ def main():
     {'title': 'Ковер', 'price': 2000, 'color': 'green'},
     {'title': 'Диван для отдыха', 'price': 5300, 'color': 'black'}
  ]
-    field(goods, 'title')
-    field(goods, 'title','price')
+    print(goods)
+    print("title: ")
+    for i in field(goods, 'title'):
+        print(i)
+    print("title, price: ")
+    for i in field(goods, 'title','price'):
+        print(i)
 
 if __name__ == "__main__":
     main()

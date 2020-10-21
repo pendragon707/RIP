@@ -34,7 +34,6 @@ def test_4():
 
 
 if __name__ == '__main__':
-    print('!!!!!!!!')
     test_1()
     test_2()
     test_3()

@@ -5,7 +5,7 @@ class Unique(object):
             self.items = items   # массив или генератор
             self.used_elements = set()
             self.index = 0
-            if(kwargs.get('ignore_case')):
+            if(kwargs.get('ignore_case') == True):
                 self.indicator = True
             else:
                 self.indicator = False
@@ -19,10 +19,19 @@ class Unique(object):
                     raise StopIteration
                 current = self.items[self.index]
                 self.index = self.index + 1
-            else:
-                raise TypeError
-            if(type(current) == str and self.indicator):
-                current = current.lower()
+#            else:
+#                raise TypeError
+#            flag = False
+#            if(type(current) == str and self.indicator):
+#                for elem in self.used_elements:
+#                    if current.lower() == elem.lower():
+#                       flag = True
+#                       break
+#                if not flag:
+#                    self.used_elements.add(current)
+#                    return current
+#                if flag:
+#                    self.__next__()
             if current not in self.used_elements:
                 self.used_elements.add(current)
                 return current
@@ -34,12 +43,17 @@ class Unique(object):
 def generator(x):
     yield x
 
+if __name__ == "__main__":
+    from get_random import get_random
+else:
+    from lab_python_fp.get_random import get_random
+
 def main():
    data = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2]
    print(list(Unique(data)))
-   data = gen_random(1, 3, 10)
+   data = get_random(10, 1, 3)
    print(list(Unique(data)))
-   data = [‘a’, ‘A’, ‘b’, ‘B’, ‘a’, ‘A’, ‘b’, ‘B’]
+   data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
    print(list(Unique(data)))
    print(list(Unique(data, ignore_case=True)))
 
