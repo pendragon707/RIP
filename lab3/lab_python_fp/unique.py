@@ -19,19 +19,22 @@ class Unique(object):
                     raise StopIteration
                 current = self.items[self.index]
                 self.index = self.index + 1
-#            else:
-#                raise TypeError
-#            flag = False
-#            if(type(current) == str and self.indicator):
+            else:
+                raise TypeError
+            flag = False
+#            if isinstance(current, str) and self.indicator:
 #                for elem in self.used_elements:
-#                    if current.lower() == elem.lower():
+#                    if current.upper() == elem.upper():
 #                       flag = True
 #                       break
-#                if not flag:
-#                    self.used_elements.add(current)
-#                    return current
+#                    if not flag:
+#                        self.used_elements.add(current)
+#                        return current
 #                if flag:
 #                    self.__next__()
+
+            if(type(current) == str and self.indicator):
+                current = current.lower()
             if current not in self.used_elements:
                 self.used_elements.add(current)
                 return current
