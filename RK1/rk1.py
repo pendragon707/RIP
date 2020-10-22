@@ -80,7 +80,7 @@ def main():
     res_11 = {}
     selected_dirs = [one_dir[2] for one_dir in one_to_many if one_dir[2].startswith('а') or one_dir[2].startswith('А')]
     for dir_name in selected_dirs:
-        files_in_dir = [one_file[0] for one_file in one_to_many if one_file[2]==dir_name]
+        files_in_dir = [(one_file[0],one_file[1]) for one_file in one_to_many if one_file[2]==dir_name]
         res_11.update({dir_name:files_in_dir})
     print(res_11)
 
