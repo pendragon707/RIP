@@ -97,14 +97,7 @@ def main():
     print(res_12)
 
     print('\nЗадание А3')
-    res_13 = {}
-    dirs.sort(key=lambda one_dir: one_dir.name)
-
-    for d in dirs:
-        d_files = list(filter(lambda i: i[2]==d.name, many_to_many))
-        d_files_names = [x for x,_,_ in d_files]
-        res_13[d.name] = d_files_names
-
+    res_13 = sorted(many_to_many, key=itemgetter(2))
     print(res_13)
 
 if __name__ == '__main__':
