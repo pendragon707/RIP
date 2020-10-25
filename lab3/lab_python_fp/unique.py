@@ -2,13 +2,13 @@ class Unique(object):
     # Итератор для удаления дубликатов
 
     def __init__(self, items, **kwargs):
-            self.items = items   # массив или генератор
-            self.used_elements = set()
-            self.index = 0
-            if(kwargs.get('ignore_case') == True):
-                self.indicator = True
-            else:
-                self.indicator = False
+        self.items = items   # массив или генератор
+        self.used_elements = set()
+        self.index = 0
+        if(kwargs.get('ignore_case') == True):
+            self.indicator = True
+        else:
+            self.indicator = False
 
     def __next__(self):
         while(True):
@@ -21,22 +21,14 @@ class Unique(object):
                 self.index = self.index + 1
             else:
                 raise TypeError
-            flag = False
-#            if isinstance(current, str) and self.indicator:
-#                for elem in self.used_elements:
-#                    if current.upper() == elem.upper():
-#                       flag = True
-#                       break
-#                    if not flag:
-#                        self.used_elements.add(current)
-#                        return current
-#                if flag:
-#                    self.__next__()
 
             if(type(current) == str and self.indicator):
-                current = current.lower()
-            if current not in self.used_elements:
-                self.used_elements.add(current)
+                current_mod = current.lower()
+            else:
+                current_mod = current
+
+            if current_mod not in self.used_elements:
+                self.used_elements.add(current_mod)
                 return current
 
     def __iter__(self):

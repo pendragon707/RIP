@@ -21,7 +21,7 @@ def f1(arg):
 
 @print_result
 def f2(arg):
-    r = re.compile("программист*")
+    r = re.compile("программист*|Программист*")
     return list(filter(r.match, arg))
 
 @print_result
@@ -31,12 +31,9 @@ def f3(arg):
 
 @print_result
 def f4(arg):
-#    salary = []
-#    for i in range(len(arg)):
-#        salary.append(random.randint(100000, 200000))
-#    return list(zip(arg, salary)))
-    pairs = list(zip(arg, [" с зарплатой {} рублей".format(zp) for zp in get_random(len(arg), 100000, 200000)]))
-    return ["{}{}".format(pair[0], pair[1]) for pair in pairs]
+    salary =list(map(lambda str: " с зарплатой {} рублей".format(str), get_random(len(arg), 100000, 200000)))
+    arg_with_salary = list(zip(arg, salary))
+    return list(map(lambda str: "{}{}".format(str[0], str[1]), arg_with_salary))
 
 if __name__ == '__main__':
     with cm_timer_1():
