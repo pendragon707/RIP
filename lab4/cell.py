@@ -8,14 +8,14 @@ class Cell():
         self.cytoplasm = False
         self.centriole = False
 
-    def build(builder):
-        self.name = builder.name
-        self.nucleus = builer.nucleus
-        self.membrane = builder.membrane
-        self.wall = builder.wall
-        self.mitochondrion = builder.mitochondrion
-        self.cytoplasm = builder.cytoplasm
-        self.centriole = builder.centriole
+#    def build(self, builder):
+#        self.name = builder._cell.name
+#        self.nucleus = builder._cell.nucleus
+#        self.membrane = builder._cell.membrane
+#        self.wall = builder._cell.wall
+#        self.mitochondrion = builder._cell.mitochondrion
+#        self.cytoplasm = builder._cell.cytoplasm
+#        self.centriole = builder._cell.centriole
 
     def __str__(self) -> None:
         dict_parts = vars(self).copy()
