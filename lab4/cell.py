@@ -1,30 +1,73 @@
-class Cell():
-    def __init__(self, name = "") -> None:
-        self.name = name
-        self.nucleus = False
-        self.membrane = False
-        self.wall = False
-        self.mitochondrion = False
-        self.cytoplasm = False
-        self.centriole = False
+from cell_state import Cell
 
-#    def build(self, builder):
-#        self.name = builder._cell.name
-#        self.nucleus = builder._cell.nucleus
-#        self.membrane = builder._cell.membrane
-#        self.wall = builder._cell.wall
-#        self.mitochondrion = builder._cell.mitochondrion
-#        self.cytoplasm = builder._cell.cytoplasm
-#        self.centriole = builder._cell.centriole
-
-    def __str__(self) -> None:
-        dict_parts = vars(self).copy()
-        dict_parts.pop('name', None)
-        list_parts = list(filter(lambda key: dict_parts.get(key), list(dict_parts.keys())))
-        if not list_parts:
-            return "{} cell contains nothing".format(self.name)
-        return "{} cell contains {}".format(self.name, ', '.join(list_parts))
-
+#from abc import ABC, abstractmethod
+#import random
+#
+#class Cell():
+#
+#    _state = None
+#
+#    def __init__(self, state = None, name = "", energy = None) -> None:
+#        self.name = name
+#        self.nucleus = False
+#        self.membrane = False
+#        self.wall = False
+#        self.mitochondrion = False
+#        self.cytoplasm = False
+#        self.centriole = False
+#
+#        if energy is None:
+#            self.energy = random.uniform(0, 1)
+#        else:
+#            self.energy = energy
+##        self.transition_to(state)
+#
+##    def build(self, builder):
+##        self.name = builder._cell.name
+##        self.nucleus = builder._cell.nucleus
+##        self.membrane = builder._cell.membrane
+##        self.wall = builder._cell.wall
+##        self.mitochondrion = builder._cell.mitochondrion
+##        self.cytoplasm = builder._cell.cytoplasm
+##        self.centriole = builder._cell.centriole
+#
+#    def change_energy(self, diff: float):
+#        self.energy += diff
+#
+#    def transition_to(self, state):
+#
+#        print("{} cell: Transition to {}".format(self.name, type(state).__name__))
+#        self._state = state
+#        self._state.context = self
+#
+#    def live(self):
+#        while True:
+#            print("{} cell has {} energy".format(self.name, self.energy), end = '\n\n')
+#            if not self._state.execute(self.name):
+#                break
+#
+#    def __str__(self) -> None:
+#        dict_parts = vars(self).copy()
+#        dict_parts.pop('name', None)
+#        dict_parts.pop('_state', None)
+#        list_parts = list(filter(lambda key: dict_parts.get(key), list(dict_parts.keys())))
+#        if not list_parts:
+#            return "{} cell contains nothing and has {} energy".format(self.name, self.energy)
+#        return "{} cell contains {} and has {} energy".format(self.name, ', '.join(list_parts), self.energy)
+#
+#class State(ABC):
+#
+#    @property
+#    def context(self) -> Cell:
+#        return self._context
+#
+#    @context.setter
+#    def context(self, context: Cell) -> None:
+#        self._context = context
+#
+#    def execute(self) -> bool:
+#        """ Main body of the state. """
+#        pass
 
 class CellBuilder():
     def __init__(self) -> None:

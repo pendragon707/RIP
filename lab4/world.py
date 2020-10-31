@@ -1,37 +1,45 @@
+from cell import Nature, CellBuilder
+from cell_state import Cell
+from cell_states import CellStateA, CellStateB, CellStateC
+
 class World:
-    """
-    Класс Фасада предоставляет простой интерфейс для сложной логики одной или
-    нескольких подсистем. Фасад делегирует запросы клиентов соответствующим
-    объектам внутри подсистемы. Фасад также отвечает за управление их жизненным
-    циклом. Все это защищает клиента от нежелательной сложности подсистемы.
-    """
 
-    def __init__(self, cells) -> None:
-        """
-        В зависимости от потребностей вашего приложения вы можете предоставить
-        Фасаду существующие объекты подсистемы или заставить Фасад создать их
-        самостоятельно.
-        """
+    def __init__(self, nature: Nature, builder: CellBuilder) -> None:
+        self._cells = []
+        self._nature = nature or Nature()
+        self._builder = builder or CellBuilder()
 
-        self._cells = cells or None
+    def add_four_cells(self) -> None:
+        # строители создают клетки и помещают их в список cells
+        self._nature.builder = self._builder
+
+        nature.build_animal_cell()
+        self._cells.append(builder.cell)
+
+        nature.build_plant_cell()
+        self._cells.append(builder.cell)
+
+        nature.build_bacteria_cell()
+        self._cells.append(builder.cell)
+
+        nature.build_fungal_cell()
+        self._cells.append(builder.cell)
 
     def operation(self) -> str:
-        # смена состояний конечного автомата и вывод каждого шага
-        pass
-
+        self.add_four_cells()
+        print(*self._cells, sep='\n')
+        for cell in self._cells:
+            cell.live()
 
 def main(world):
     world.operation()
 
 
 if __name__ == "__main__":
-    # В клиентском коде могут быть уже созданы некоторые объекты подсистемы. В
-    # этом случае может оказаться целесообразным инициализировать Фасад с этими
-    # объектами вместо того, чтобы позволить Фасаду создавать новые экземпляры.
 
 
+    nature = Nature()
+    builder = CellBuilder()
 
-    # строители создают клетки и помещают их в список cells
-
-    world = World(cells)
+    world = World(nature, builder)
     main(world)
