@@ -6,114 +6,74 @@
 # C -> C = 1
 
 from abc import ABC, abstractmethod
-from cell_state import Cell, State
+from cell import Cell, State
 import random
-
-# Может, сделать сюда builder или возможность передавать Cell в конструктор
-#class CellContext(Cell):
-#
-#    _state = None
-#
-#    def __init__(self, state, cell: Cell,  name = "", energy = random.uniform(0, 1)) -> None:
-#        if cell is not None:
-#            self.name = cell.name
-#            self.nucleus = cell.nucleus
-#            self.membrane = cell.membrane
-#            self.wall = cell.wall
-#            self.mitochondrion = cell.mitochondrion
-#            self.cytoplasm = cell.cytoplasm
-#            self.centriole = cell.centriole
-#        else:
-#            super().__init__(name)
-#
-#        self.energy = energy
-#        self.transition_to(state)
-#
-#    def change_energy(self, diff: float):
-#        self.energy += diff
-#
-#    def transition_to(self, state):
-#
-#        print("{} cell: Transition to {}".format(self.name, type(state).__name__))
-#        self._state = state
-#        self._state.context = self
-#
-#    def live(self):
-#        while True:
-#            print("{} cell has {} energy".format(self.name, self.energy), end = '\n\n')
-#            if not self._state.execute(self.name):
-#                break
-#
-#class State(ABC):
-#
-#    @property
-#    def context(self) -> CellContext:
-#        return self._context
-#
-#    @context.setter
-#    def context(self, context: CellContext) -> None:
-#        self._context = context
-#
-#    @abstractmethod
-#    def execute(self) -> bool:
-#        """ Main body of the state. """
-#        pass
 
 class CellStateA(State):
 
     """ add energy (eat, breathes)"""
-    def execute(self, name) -> bool:
+    def execute(self):
 #        print("A")
-
+        results = []
         self.context.change_energy(random.normalvariate(0.1, 0.05))
 
-        print("{} cell eat and breaths".format(name))
-        print("{} cell has {} energy".format(self.context.name, self.context.energy), end = '\n\n')
-        self.change_state()
+#        print("\n{} cell eat and breaths".format(self.context.name))
+#        print("{} cell has {} energy".format(self.context.name, self.context.energy))
+        results.append("\n{} cell eat and breaths".format(self.context.name))
+        results.append("{} cell has {} energy".format(self.context.name, self.context.energy))
+        results.append(self.change_state())
 
-        return True
+        return True, "\n".join(results)
 
-    def change_state(self) -> None:
+    def change_state(self):
+        results = []
         next_state = random.choices(['A', 'B', 'C'], weights = [1 - self.context.energy ** 2, self.context.energy ** (1/2), (self.context.energy - 1) ** 2])
         if next_state[0] == 'B':
-            self.context.transition_to(CellStateB())
+            results.append(self.context.transition_to(CellStateB()))
         elif next_state[0] == 'C':
-            self.context.transition_to(CellStateC())
+            results.append(self.context.transition_to(CellStateC()))
+        return "\n".join(results)
 
 
 class CellStateB(State):
     """ duplicates """
 
-    def execute(self, name) -> bool:
+    def execute(self):
 #        print("B")
-
+        results = []
         self.context.change_energy(-self.context.energy*random.normalvariate(0.5, 0.1))
 
-        print("{} cell duplicates".format(name))
-        print("{} cell has {} energy".format(self.context.name, self.context.energy), end = '\n\n')
-        self.change_state()
+#        print("\n{} cell duplicates".format(self.context.name))
+#        print("{} cell has {} energy".format(self.context.name, self.context.energy))
+        results.append("\n{} cell duplicates".format(self.context.name))
+        results.append("{} cell has {} energy".format(self.context.name, self.context.energy))
+        results.append(self.change_state())
 
-        return True
+        return True, "\n".join(results)
 
-    def change_state(self) -> None:
+    def change_state(self):
+        results = []
         next_state = random.choices(['A', 'C'], weights = [1 - self.context.energy ** 2, (self.context.energy - 1) ** 2])
         if next_state[0] == 'A':
-            self.context.transition_to(CellStateA())
+            results.append(self.context.transition_to(CellStateA()))
         elif next_state[0] == 'C':
-            self.context.transition_to(CellStateC())
+            results.append(self.context.transition_to(CellStateC()))
+        return "\n".join(results)
 
 
 class CellStateC(State):
     """ dies """
 
-    def execute(self, name) -> bool:
+    def execute(self) -> bool:
 #        print("C")
-        print("{} dies".format(name))
-        return False
+        results = []
+#        print("\n{} cell dies".format(self.context.name))
+        results.append("\n{} cell dies".format(self.context.name))
+        return False, "\n".join(results)
 
 def main():
     cell = Cell(CellStateA(), "Fungal")
-    cell.live()
+    print(cell.live())
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,5 @@
-from cell import Nature, CellBuilder
-from cell_state import Cell
+from cell_builder import Nature, CellBuilder
+from cell import Cell
 from cell_states import CellStateA, CellStateB, CellStateC
 
 class World:
@@ -13,31 +13,32 @@ class World:
         # строители создают клетки и помещают их в список cells
         self._nature.builder = self._builder
 
-        nature.build_animal_cell()
-        self._cells.append(builder.cell)
+        self._nature.build_animal_cell()
+        self._cells.append(self._builder.cell)
 
-        nature.build_plant_cell()
-        self._cells.append(builder.cell)
+        self._nature.build_plant_cell()
+        self._cells.append(self._builder.cell)
 
-        nature.build_bacteria_cell()
-        self._cells.append(builder.cell)
+        self._nature.build_bacteria_cell()
+        self._cells.append(self._builder.cell)
 
-        nature.build_fungal_cell()
-        self._cells.append(builder.cell)
+        self._nature.build_fungal_cell()
+        self._cells.append(self._builder.cell)
 
     def operation(self) -> str:
+        results = []
         self.add_four_cells()
-        print(*self._cells, sep='\n')
         for cell in self._cells:
-            cell.live()
+            results.append(cell.__str__())
+            results.append(cell.live())
+            results.append("\n -------------------------------------- \n")
+        return "\n".join(results)
 
 def main(world):
-    world.operation()
+    print(world.operation())
 
 
 if __name__ == "__main__":
-
-
     nature = Nature()
     builder = CellBuilder()
 
