@@ -34,7 +34,7 @@ class Cell():
             self.energy = energy
         self.transition_to(state)
 
-    def change_energy(self, diff: float):
+    def change_energy(self, diff: float) -> None:
         self.energy += diff
         if self.energy > 1:
             self.energy = 1
@@ -48,7 +48,7 @@ class Cell():
         self._state.context = self
         return "\n".join(results)
 
-    def live(self):
+    def live(self) -> str:
         result = []
         while(True):
             indicator, answer = self._state.execute()
