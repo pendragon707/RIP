@@ -19,3 +19,7 @@
 ## РК №1
 - [Код](https://github.com/pendragon707/RIP/tree/master/RK1)
 - [Отчёт](https://github.com/pendragon707/RIP/blob/master/RK1/review.pdf)
+
+## РК №2
+- [Код](https://github.com/pendragon707/RIP/tree/master/RK2)
+- [Отчёт](https://github.com/pendragon707/RIP/blob/master/RK2/review.pdf)
