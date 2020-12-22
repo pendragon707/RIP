@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+    <style>
+             body{
+               background-color: #FFFDFB;
+               font-family:Verdana, sans-serif;
+               font-style: normal;
+             }
+              h1{
+                font-weight: 100;
+                font-size: 200%;
+                color: #475168;
+             }
+    </style>
+  </head>
+  <body>
+    <h1>Каролингские иллюминированные рукописи</h1>
+    <ol>
+      {% for item in items %}
+        <li><a href="{% url 'detail' item.id %}">{{ item.title}}</a></li>
+      {% endfor %}
+    </ol>
+  </body>
+</html>

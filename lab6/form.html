@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8">
+  <title>form</title>
+  <link rel="stylesheet" href="./form.css" type="text/css">
+ </head>
+ <body>
+   <form action="/none/form.php">
+    <div class="wrapper">
+       <div class="box box1">
+         <h2><div class="text" style="margin-left: 30px; margin-top:10px">Видимо, вы заблудились</div></h2>
+            <section style="margin-left: 30px; margin-bottom:10px">
+              <section>
+                <p>  <label>Ваше имя:</label><Br>
+                <input placeholder="Введите текст" name="name" style="width: 100%; padding: 6px 12px; margin: 8px 0; box-sizing: border-box;"> </p>
+              </section>
+              <section>
+                <p> <label>Ваша страна:</label><Br>
+                <input placeholder="Введите текст" name="name2" style="width: 100%; padding: 6px 12px; margin: 8px 0; box-sizing: border-box;"> </p>
+              </section>
+            </section>
+       </div>
+       <div class="box box2">
+         <header>
+         <h1 style="align: right">Где же вы сейчас?</h1>
+         </header>
+       </div>
+       <div class="box box3">
+         <section align = right style="display grid; margin-right: 140px; grid-row-gap: 10px; margin-top: 20px" >
+           <p><label>Как выглядит местность?</label><Br>
+             <select name="where" id="where" size=4 style="font-size: 100%">
+               <option value="city"> <p>Город</p> </option>
+               <option value="forest">Лес</option>
+               <option value="hell">Черт знает</option>
+               <option value="desert">Пустыня</option>
+             </select>
+            </p>
+         
+         <button style="width: 60px; height: 60px; border-radius: 50%; background: white">
+            <img src="img/button.png" alt="panic" width="40px" height="40px" style="vertical-align: middle; horizontal-align: middle">
+         </button>
+         </section>
+
+       </div>
+       <div class="box box4">
+         <h2> <div class="text" style="margin-left: 30px">Связи нет? А интернет ловит? Или оффлайн-карты есть? Неужели совсем их не понимаете? Сочувствую, земля пухом.</div> </h2>
+            <section style="margin-left: 30px">
+              <p> <label for="extra">Расскажите подробнее о произошедшем:</label> </p>
+              <textarea id="extra" name="extra" rows=18 cols=75> </textarea> 
+            </section>
+       </div>
+       <div class="box box5">
+
+         <select name="oh" id="oh" style="font-size: 200%">
+               <option value="run"><p>Бежать</p></option>
+               <option value="crawl">Ползти</option>
+               <option value="swim">Плыть</option>
+               <option value="fly">Лететь</option>
+               <option value="drive">Ехать</option>
+         </select>        
+
+            <input placeholder="Можете покричать" name="text"> 
+
+            <section style="margin-top: 30px">
+              <p> <label>Какие вещи вас настораживают?</label><Br>
+              <input type="checkbox" name="frost" id="frost" value="frost">
+              <label for="frost">Мороз</label><Br>
+              <input type="checkbox" name="wolves" id="wolves" value="wolves">
+              <label for="wolves">Волки</label><Br>
+              <input type="checkbox" name="hunger" id="hunger" value="hunger">
+              <label for="hunger">Голод</label><Br>
+            </section>
+              </p>
+
+              <h2><div class="text">Что ж, вряд ли что-то может вам помочь, но сочувствуем</div></h2>
+       </div>
+       <div class="box box6">
+          <section>
+            <p>            
+            <label for="hopelessness">Насколько ситуация безнадёжна?</label>
+            <br>
+            <span>Может выживу</span>   
+            <input type="range" name="hopelessness" id="hopelessness" value="3" min="1" max="5" step="1">
+            <span>Ужасно</span>
+            </p>
+          </section>
+            
+          <section>
+            <p><label for="extra2">Есть ли что сказать напоследок?</label></p>
+            <textarea id="extra2" name="extra2" rows=12 cols=65></textarea> 
+          </section>
+
+          <section>
+            <p><label>Кстати, откуда дует ветер?</label><Br>
+            <input type="radio" name="direction" id="radio1" value="north">
+            <label for="north">North</label>
+            <input type="radio" name="direction" id="radio2" value="south">
+            <label for="south">South</label>
+            <input type="radio" name="direction" id="radio3" value="east">
+            <label for="east">East</label>
+            <input type="radio" name="direction" id="radio4" value="west">
+            <label for="west">West</label>
+            </p>
+          </section>
+       </div>
+   </div>
+
+     <section align=right style="margin-right: 140px">
+       <input type="submit" value="Отправить" style="width: 10%;"> 
+     </section>
+
+   </form>
+
+ </body>
+</html>

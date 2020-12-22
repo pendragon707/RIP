@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru">
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+    <script src="bootstrap.bundle.min.js"></script>
+
+    <style>
+      .center-cropped {
+        object-fit: none;
+        object-position: center;
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-expand-lg navbar-dark bg-dark" role="navigation">
+      <a class="navbar-brand" href="#" style="margin-left: 30px">
+        <img src="img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Панель навигации
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#progressbars">Индикаторы прогресса</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#tables">Таблица</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#forms">Элементы HTML-форм</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link text-white-50 dropdown-toggle active" area-current="page" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Выпадающий список кнопок
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <li><a class="text-white-50 dropdown-item" href="javascript:alert('Кнопка 1')">Кнопка 1</a></li>
+              <li><a class="text-white-50 dropdown-item" href="javascript:alert('Кнопка 2')">Кнопка 2</a></li>
+              <li><a class="text-white-50 dropdown-item" href="javascript:alert('Кнопка 3')">Кнопка 3</a></li>
+              <li><a class="text-white-50 dropdown-item" href="javascript:alert('Кнопка 4')">Кнопка 4</a></li>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="m-3">
+      <h2 id="progressbars">Индикаторы прогресса</h2>
+
+      <div class="progress mb-1">
+        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="progress mb-1">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+      </div>
+      <div class="progress mb-1">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+
+    <div class="m-3">
+      <h2 id="tables">Таблица</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Я</th>
+            <th scope="col">Не вижу зла</th>
+            <th scope="col">Не слышу зла</th>
+            <th scope="col">Не говорю о зле</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="table-info" rowspan="4">
+              <div style="width: 50px; height: 200px">
+                <img src="img/me.png" class="center-cropped rounded-lg">
+              </div>
+            </td>
+            <td class="table-warning">-</td>
+            <td class="table-info">+</td>
+            <td class="table-warning">+</td>
+          </tr>
+          <tr>
+            <td class="table-info">-</td>
+            <td class="table-warning">-</td>
+            <td class="table-info">-</td>
+          </tr>
+          <tr>
+            <td class="table-warning">+</td>
+            <td class="table-info">+</td>
+            <td class="table-warning">-</td>
+          </tr>
+          <tr>
+            <td class="table-info">-</td>
+            <td class="table-warning">+</td>
+            <td class="table-info">-</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <div class="m-3">
+      <h2 id="forms">Элементы HTML-форм</h2>
+      <form>
+        <div class="form-row">
+          <div class="from-group col-md-4 mb-3">
+            <label for="textbox">Ваше имя: </label>
+            <input type="text" class="form-control" id="textbox" placeholder="чувак это несекурно" required></input>
+          </div>
+          <div class="form-group col-md-4 mb-3">
+            <label for="combobox">Ваш пол</label>
+            <select name="combobox" role="combobox" class="custom-select" required>
+              <option value="comboitem1" selected>Женский</option>
+              <option value="comboitem2">Мужской</option>
+              <option value="comboitem3">Это несекурно</option>
+              <option value="comboitem4">Это нетолерантно</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4 mb-3">
+            <label for="datalist">Кто ваш лучший друг?</label>
+            <input name="datalist" list="datalistitems" class="custom-select custom-select-sm" required>
+              <datalist id="datalistitems">
+                <option value="Друг 1">Будда</option>
+                <option value="Друг 2">Иисус</option>
+                <option value="Друг 3">Аллах</option>
+                <option value="Друг 4">Кришна</option>
+              </datalist>
+            </input>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4 mb-3">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="checkbox1"></input>
+              <label class="custom-control-label" for="checkbox1">Галочка раз</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="checkbox2"></input>
+              <label class="custom-control-label" for="checkbox2">Галочка два</label>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="radio1" name="radiogroup" value="radio2" checked="checked"></input>
+              <label class="custom-control-label" for="radio1">Радиокнопка раз</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="radio2" name="radiogroup" value="radio2"></input>
+              <label class="custom-control-label" for="radio2">Радиокнопка два</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <select name="listbox" role="listbox" size="4" class="custom-select" required>
+              <option value="listitem1" selected>Элемент 1</option>
+              <option value="listitem2">Элемент 2</option>
+              <option value="listitem3">Элемент 3</option>
+              <option value="listitem4">Элемент 4</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="multiline">Что вы думаете о Книге из Дарроу (650-700 гг)?</label>
+            <textarea name="multiline" class="form-control" rows=7
+              placeholder="Текстовое поле ввода из нескольких строк" required></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <input type="submit" class="btn btn-warning" value="Отправить"></input>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </body>
+</html>
